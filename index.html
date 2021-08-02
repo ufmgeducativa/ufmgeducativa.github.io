@@ -15,9 +15,15 @@
         <link rel="stylesheet"
               href="./css/index-default-stylesheet.css" type="text/css"/>
         
-        <script src=’https://www.google.com/recaptcha/api.js’></script>
+        
+        <script src="https://www.google.com/recaptcha/api.js"></script>
     </head>
     <body>
+        <script>
+            function onSubmit(token) {
+              document.getElementById("demo-form").submit();
+            }
+          </script>         
         <div class="main-division">
             <header class="page-header"
                     title="UFMG Educativa">>
@@ -50,8 +56,10 @@
                     <div class="card">
                         <a href="http://jacarepagua.cedecom.ufmg.br:3037/"
                            target="_blank"
-                           class=”g-recaptcha” 
-                           data-sitekey="6LdzS9UbAAAAAGZ20UIN4x_790hTvLsyNWxteGVe">
+                           class="g-recaptcha"
+                           data-sitekey="6LdzS9UbAAAAAGZ20UIN4x_790hTvLsyNWxteGVe"
+                           data-callback='onSubmit'
+                           data-action='submit'>
                             <img src="./img/logger_logo.webp" alt="">
                             <p>Logger Playlist</p>
                         </a>
