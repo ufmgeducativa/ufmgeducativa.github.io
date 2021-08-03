@@ -139,8 +139,6 @@ main{
   margin: 0% 30% 2% 30%;
   border: 2px solid rgb(255, 255, 255);
   box-sizing: border-box;
-  
-
 }
 .card-live:hover{
   transform: scale(1.05);
@@ -178,6 +176,8 @@ main{
   text-align: left;
   text-shadow: 2px 2px 2px black;
   
+  border-top:1px solid transparent;
+  border-bottom:1px solid transparent;
 }
 
 .page-footer p{

@@ -126,6 +126,8 @@ main{
   text-align: left;
   text-shadow: 2px 2px 2px black;
   
+  border-top:1px solid transparent;
+  border-bottom:1px solid transparent;
 }
 
 .page-footer p{
