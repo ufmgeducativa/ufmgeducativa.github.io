@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>UFMG Educativa</title>
+        <meta name="keywords" 
+              content="rádio, ufmg educativa, ufmg"/>
+        <meta name="description"
+              content="Concentração de conteúdos da rádio UFMG Educativa"/>
+        <meta name="Author" content="Rafael M. Silva"/>
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1"/>
+
+        
+        <link rel="icon" href="./img/radioufmg.ico"/>
+        <link rel="stylesheet"
+              href="./css/player-default-stylesheet.css" type="text/css"/>
+        
+        <link rel="stylesheet" 
+              href="/assets/css/main.css?v=201804050815"/>
+             
+    </head>
+    <body>         
+        <div class="main-division">
+            <header class="page-header"
+                    title="UFMG Educativa">>
+                <img src="./img/radio_logo_noback.webp"
+                     alt="Logo UFMG Educativa"/>
+                <h1>UFMG Educativa</h1>
+            </header>
+
+            <div class="nav-container">
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./hist.html">História</a></li>
+                        <li><a href="">Link</a></li>
+                    </ul>
+                </nav>
+
+                <div class="nav-content">
+                    <h2>A estação do conhecimento</h2>
+                    <p>104.5 FM</p>
+                </div>
+            </div>
+            
+            <main>
+            
+                <section class="radio-cover radio-popup" >
+                    <div class="radio-player">
+            
+                        <div class="radio-player__play">
+                            <button type="button" 
+                                    class="radio-player__play-button">
+                                    Parar
+                            </button>
+            
+                            <div class="radio-player__listening">
+                                <p class="radio-player__status">ao vivo</p>
+                                <!-- <p class="radio-player__hearing">
+                                    Ouça agora
+                                </p> -->
+
+                                <img class="radio-logo" src="./img/índice.png" 
+                                 alt="Radio UFMG"/>
+                            </div> 
+
+                            <button type="button" class="radio-player__volume-button">
+                                <i class="icon  icon--volume"></i>
+                            </button>
+
+                            
+                        </div>
+                        
+                    </div>
+                </section>
+
+
+            </main>
+
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	        <script>
+                (function ($, window, document) {
+                    $.createAudioPlayer = function(object) {
+                        $.fn.enablePlayer = function (options) {
+                            var playing = false;
+                            var that;
+                            var $window = $(window);
+                            var $input = null;
+                            var getElementBounding = function(element) {
+                                var ret = teste = $.extend({}, element.getBoundingClientRect());
+                                ret.top += $window.scrollTop();
+                                ret.bottom += $window.scrollTop();
+                                return ret;
+                            }
+                            var createVolumeRange = function(element, audio_player) {
+                                if ($input) return destroyVolumeRange();
+                                var bounding = getElementBounding(element);
+                                // console.log(bounding);
+                                var x = bounding.left-((bounding.right-bounding.left))-bounding.width,
+                                    y = bounding.bottom;
+                                // console.log(x, y);
+                                $input = $(document.createElement('input'));
+                                $input.attr({'type': 'range', 'min': 0, 'max': 1, 'step': .1, 'value': 1}).addClass("player__volume player__popup");
+                                $input.css({
+                                    position: 'absolute',
+                                    left: x + 'px',
+                                    top: y + 'px',
+                                    width: '100px',
+                                    height: '24px',
+                                    zIndex: '999'
+                                }).prependTo('body').on('input.player change.player', function(event) {
+                                    audio_player.volume = $input.val();
+                                });
+                                $window.on('resize.player', function() {
+                                    bounding  = getElementBounding(element);
+                                    x = bounding.left-((bounding.right-bounding.left))-bounding.width;
+                                    y = bounding.bottom;
+                                    $input.css({
+                                        left: x + 'px',
+                                        top: y + 'px'
+                                    });
+                                });
+                            };
+                            var destroyVolumeRange = function() {
+                                if ($input) {
+                                    $window.off('.player');
+                                    $input.off('.player').remove();
+                                }
+                                $input = null;
+                            }
+                            return this.each(function () {
+                                var _this = this,
+                                    $this = $(_this);
+                                that = $this.get(0);
+                                $(options.controls.play).on('click', function (event) {
+                                    event.preventDefault();
+                                    if (!playing) {
+                                        playing = true;
+                                        that.play();
+                                    $(options.controls.status).addClass(options.controls.status.substr(1)+'--online')
+                                    } else if (!options.controls.pause) {
+                                        playing = false;
+                                        that.pause();
+                                    $(options.controls.status).removeClass(options.controls.status.substr(1)+'--online')
+                                    };
+                                });
+                                $(options.controls.volume).on('click', function (event) {
+                                    event.preventDefault();
+                                    createVolumeRange(this, that);
+                                });
+                            });
+                        };
+                        object = $.extend({
+                            mp3: 'http://150.164.63.210:8000/aovivo.mp3',
+                            ogg: 'http://150.164.63.210:8000/aovivo.opus',
+                            controls: {
+                                play: '.radio-player__play-button',
+                                pause: null,
+                                volume: '.radio-player__volume-button',
+                                status: '.radio-player__status'
+                            }
+                        }, object);
+                        var radioMounter = '<audio preload="none" controls>' + (object.mp3 ? '<source src=' + object.mp3 + ' type="audio/mpeg">' : '') + (object.ogg ? '<source src=' + object.ogg + ' type="audio/ogg">' : '') + '</audio>';
+                        // console.log(radioMounter);
+                        // console.log($(radioMounter));
+                        // console.log($('<audio></audio>'));
+                        $(radioMounter).css('display', 'none').appendTo('body').enablePlayer(object);
+                        // console.log($(radioMounter));
+                    }
+                })(jQuery, window, document);
+
+                $(document).ready(function ($) {
+                    $('.radio-player__play-button').on('click', function (event) {
+                        event.preventDefault();
+
+                        $(this).toggleClass('radio-player__play-button--stop');
+
+                        if ($(this).hasClass('radio-player__play-button--stop')) {
+                            $(this).text('Tocar')
+                        } else {
+                            $(this).text('Parar')
+                        }
+                    });
+
+                    $.createAudioPlayer();
+
+                }(jQuery));
+
+	        </script>
+
+            <footer class="page-footer">
+                <ul>
+                    <li>
+                        <a href="https://github.com/ufmgeducativa">
+                            <img src="./img/github.ico" 
+                            title="github ufmgeducativa"
+                            alt="github ufmgeducativa"/>
+                            <p>Github</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/ufmgeducativa">
+                            <img src="./img/twitter.ico" 
+                            title="@ufmgeducativa"
+                            alt="twitter ufmgeducativa"/>
+                            <p>Twitter</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/ufmgeducativa/?hl=pt-br">
+                            <img src="./img/insta.ico" 
+                            title="instagram ufmg educativa"
+                            alt="instagram ufmgeducativa"/>
+                            <p>Instagram</p>
+                        </a>
+                    </li>
+                </ul>
+            </footer>
+
+        </div>
+    </body>
+</html>
