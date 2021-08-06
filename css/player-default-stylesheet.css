@@ -154,8 +154,9 @@ main{
 }
 
 .icon--volume:after{
-    content: "\f6a8";
+    content: "\1F56A";
     display: block;
+    font-size: 16pt;
     width: 1px;
     height: fit-content
 }

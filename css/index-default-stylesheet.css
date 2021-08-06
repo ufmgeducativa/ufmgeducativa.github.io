@@ -132,11 +132,11 @@ main{
 .card-live{
   display:inline-block;
 
-  width : 40%;
+  width : 25%;
   height: fit-content;
 
   border-radius: 5px;
-  margin: 0% 30% 2% 30%;
+  margin: 0% 38% 2% 38%;
   border: 2px solid rgb(255, 255, 255);
   box-sizing: border-box;
 }
