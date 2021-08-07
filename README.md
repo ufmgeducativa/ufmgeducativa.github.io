@@ -1,5 +1,5 @@
 # Site UFMG Educativa
-> Este é um péqueno site para concentração de serviços da rádio UFMG Educativa. Ele ser acessado <a href="https://radioufmgeducativa.github.io">aqui</a>
+> Este é um péqueno site para concentração de serviços da rádio UFMG Educativa. Ele ser acessado <a href="https://ufmgeducativa.github.io/">aqui</a>
 
 ## Página Principal
 Página principal do  site para exibir os links para os serviços da rádio.
