@@ -195,7 +195,6 @@ main{
 /* Player */
 .radio-popup{
   width: 100%;
-  height: 200px;
 }
 .radio-cover{
   background-size:cover; 
