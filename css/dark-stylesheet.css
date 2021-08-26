@@ -162,11 +162,11 @@ main{
 .card-live{
   display:inline-block;
 
-  width : 25%;
+  width : 20%;
   height: fit-content;
 
   border-radius: 5px;
-  margin: 0% 37% 2% 37%;
+  margin: 1% 10% 1% 5%;
   border: 2px solid rgb(255, 255, 255);
   box-sizing: border-box;
 }
@@ -198,7 +198,7 @@ main{
   width: 100%;
 }
 .radio-cover{
-  background-size: cover; 
+  background-size:cover; 
   background-image: url(../img/player.webp);
 }
 
@@ -264,7 +264,7 @@ main{
 .icon--volume:after{
   content: "\1F56A";
   display: block;
-  font-size: 16pt;
+  font-size: 25pt;
   width: 1px;
   height: fit-content
 }
@@ -350,8 +350,10 @@ main{
 
 .radio-popup .radio-player{
   min-height:inherit;
-  height:120px;
+  height:200px;
   padding:20px 32px;
+  margin-top: 5%;
+  margin-bottom: 10%;
 }
   
 .radio-popup .radio-player__play{
@@ -363,7 +365,9 @@ main{
 }
   
 .radio-popup .radio-player__play .radio-player__listening p{
-  margin-bottom:0;font-size:.7777777778em;
+  margin-bottom:0;
+  font-size:1.05em; /*.7777777778em*/
+  font-weight: bold;
   line-height:1.7142857143em;
 }
   
@@ -378,7 +382,8 @@ main{
   
 .radio-popup .radio-player__volume-button{
   position:inherit;
-  right:inherit;top:0;
+  right:inherit;
+  top:0;
 }
 
 .radio-popup .radio-player__volume-button .drop .owl-controls .owl-next,
@@ -391,36 +396,48 @@ main{
 .radio-popup .radio-logo{
   position: absolute;
   right :0;
-  top   :0;
+  top   :10%;
   float : right;
-  width :74px;
+  width :90px;
   height: fit-content;
 }
 
 .radio-popup .radio-player__play-button{
-  margin-bottom:0;width:6em;height:6em;
-  border:3px solid #f2f2f2;text-indent:-99999px}
+  margin-bottom:0;
+  width:10em; /* 6em*/
+  height:10em;
+  border:3px solid #f2f2f2;
+  text-indent:-99999px
+}
 
 .radio-popup .radio-player__play-button:before{
   height:0;position:absolute;
-  top:1.7em;
-  left:2.2em;
+  top:2.8em;
+  left:3em;
   border-style:solid;
-  border-width:1em 0 1em 2em;
-  border-color:transparent transparent transparent #f2f2f2;transition:90ms linear all}
+  border-width:2em 0 2em 4em;
+  border-color:transparent transparent transparent #f2f2f2;
+  transition:90ms linear all
+}
 
 .radioprogramming-item,.radioprogramming-tab li{
   transition:all 250ms cubic-bezier(.87,.37,.27,.95)}
 
 .radio-popup .radio-player__play-button--stop:before{
-  height:1.7em;border-width:0 0 0 1.7em;top:1.9em;left:1.9999em}
+  height:3.5em;
+  border-width:0 0 0 3.5em;
+  top:3.0em;
+  left:3.0em
+}
 
 
 /* Responsive media */
 @media (max-width:768px){
   .radio-player{position:relative;margin-bottom:1.3333333333em}
 
-  .radio-player__listening{width:67%;float:right}
+  .radio-player__listening{
+    width:67%;
+    float:right}
 
   .radio-player__play-button{margin-right:1.1111111111em}
 
@@ -467,7 +484,6 @@ main{
       float:none;
   }
 }
-
 /* ============================================== */
 /* page footer */
 .page-footer{
